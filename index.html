@@ -3,7 +3,17 @@
   <h1>Vamos começar! :)</h1>
   <form action="#">
     <div>
-      <input type="file" accept="image/*">
+			<input type="file" accept="image/*" />
     </div>
-  </form>
+		<button type="submit">Mostrar dimensões</button>
+	</form>
+
+	<script>
+		document.querySelector('form').addEventListener('submit', e => {
+			// Inibir o comportamento padrão de envio do formulário
+			e.preventDefault()
+
+			const file = document.querySelector('input').files[0]
+		})
+	</script>
 </body>
