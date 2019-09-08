@@ -1,7 +1,8 @@
 const electron = require('electron')
 
-const { app } = electron;
+const { app, BrowserWindow } = electron;
 
 app.on('ready', () => {
-  console.log('Aplicação foi criada :)')
+  const janelaPrincipal = new BrowserWindow({})
+  janelaPrincipal.loadURL(`file://${__dirname}/index.html`)
 })
