@@ -1,12 +1,19 @@
-<head></head>
+<head>
+	<link rel="stylesheet" href="styles.css">
+</head>
 <body>
-  <h1>Vamos começar! :)</h1>
-  <form action="#">
-    <div>
-			<input type="file" accept="image/*" />
-    </div>
-		<button type="submit">Mostrar dimensões</button>
-	</form>
+	<div class="container">
+		<h1>Image Size Electron 📏🎴</h1>
+		<form action="#">
+			<label for='input-file'>Selecionar uma imagem</label>
+			<input type="file" id="input-file" accept="image/*" />
+			<span id='file-name'></span>
+
+			<button type="submit">Mostrar dimensões</button>
+		</form>
+		<h2 id="result"></h2>
+	</div>
+
 
 	<script>
 		const electron = require('electron')
@@ -20,5 +27,17 @@
 
 			ipcRenderer.send('obterDimensoesDaImagem', path)
 		})
+
+		ipcRenderer.on('dimensoesDaImagem', (event, dimensions) => {
+			document.querySelector('#result').innerHTML = `Largura: ${dimensions.width} Altura: ${dimensions.height}`
+		});
+
+		// Input
+		let input = document.getElementById('input-file'),
+    fileName = document.getElementById('file-name');
+
+		input.addEventListener('change', function() {
+			fileName.textContent = this.value;
+		});
 	</script>
 </body>
