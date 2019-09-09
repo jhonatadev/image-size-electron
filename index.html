@@ -16,7 +16,9 @@
 			// Inibir o comportamento padrão de envio do formulário
 			e.preventDefault()
 
-			const file = document.querySelector('input').files[0]
+			const { path } = document.querySelector('input').files[0]
+
+			ipcRenderer.send('obterDimensoesDaImagem', path)
 		})
 	</script>
 </body>
