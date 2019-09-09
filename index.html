@@ -9,6 +9,9 @@
 	</form>
 
 	<script>
+		const electron = require('electron')
+		const { ipcRenderer } = electron
+
 		document.querySelector('form').addEventListener('submit', e => {
 			// Inibir o comportamento padrão de envio do formulário
 			e.preventDefault()
